@@ -23,6 +23,7 @@
 .social-links{display:flex;align-items:center;gap:10px}
 .social-links a{width:36px;height:36px;border-radius:50%;background:#fff;color:#333;display:grid;place-items:center;font-size:14px;font-weight:700;box-shadow:0 1px 4px #0002,0 2px 8px #0001;border:1px solid #e8ecee;transition:all .15s}
 .social-links a:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+.social-links a svg{width:1em;height:1em;display:block}
 .header-row-2-wrapper{border-top:1px solid #eef1f3}
 .header-row-2{display:flex;align-items:center;justify-content:space-between;padding-top:0;padding-bottom:0;position:relative}
 .primary-navigation{align-self:stretch;display:flex;align-items:stretch;gap:2px;width:100%;justify-content:flex-end}
