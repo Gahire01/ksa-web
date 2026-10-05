@@ -1,0 +1,7 @@
+# TODO
+
+- [x] **Rebrand the public homepage for Kigali Safety Academy:** Replace the visible OSHAcademy name and old logo with “Kigali Safety Academy” and the logo supplied by the user; update the visible page title, hero, navigation, promotional banner, supporting copy, footer, and browser metadata; keep the reference-style homepage structure and the logo's navy/burgundy identity.
+- [x] **Preserve responsive and accessible behavior:** Keep the page responsive, with the accessible desktop navigation, mobile menu, cookie notice, semantic sections, descriptive logo text, keyboard-focusable category strip, and clear interaction states.
+- [x] **Keep the educational recreation scope transparent:** Recreate the public homepage only; do not claim the original site's account/course backend. Follow instructor rules for third-party asset attribution.
+- [x] **Refine the visual match to the original homepage:** Restore a single horizontal category strip with four cards visible on desktop and two on phones, while retaining all six categories, the Kigali Safety Academy name, and the user-supplied logo.
+- [ ] **“now make it look like that 100 percent”:** Make the recreated site look 100% like the original reference. A literal pixel-perfect match remains open because the site is branded for Kigali Safety Academy and does not include the original platform's backend.
