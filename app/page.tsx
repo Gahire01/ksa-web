@@ -1,10 +1,17 @@
+const officialCourses = [
+  "Construction Safety and Health Management",
+  "Occupational Safety and Health (OSH)",
+  "First Aid Training",
+  "Fire Fighting Training",
+  "Rigger Safety Training",
+];
+
 const categories = [
-  { name: "HEALTHCARE", image: "index-slider-11.jpg", link: "#programs" },
-  { name: "GENERAL INDUSTRY", image: "index-slider-1.jpg", link: "#programs" },
-  { name: "EM 385-1-1 (2024)", image: "index-slider-2.jpg", link: "#programs" },
-  { name: "CONSTRUCTION", image: "index-slider-7.jpg", link: "#programs" },
-  { name: "HAZWOPER", image: "index-slider-9.jpg", link: "#programs" },
-  { name: "OIL & GAS", image: "index-slider-10.jpg", link: "#programs" },
+  { name: "Construction Safety and Health Management", image: "index-slider-7.jpg", link: "#courses" },
+  { name: "Occupational Safety and Health (OSH)", image: "index-slider-1.jpg", link: "#courses" },
+  { name: "First Aid Training", image: "index-slider-11.jpg", link: "#courses" },
+  { name: "Fire Fighting Training", image: "index-slider-2.jpg", link: "#courses" },
+  { name: "Rigger Safety Training", image: "index-slider-9.jpg", link: "#courses" },
 ];
 
 const learnerBenefits = [
@@ -14,9 +21,9 @@ const learnerBenefits = [
   { title: "Safer workplaces", text: "Share useful safety knowledge with colleagues and support a stronger culture of prevention." },
 ];
 
-const recommended = ["108 Personal Protective Equipment: Basic", "603 Stairway and Ladder Safety", "605 Confined Space Safety", "611 Nail Gun Safety", "710 Energy Control Program (Lockout/Tagout)", "40-hour HAZWOPER for General Site Workers"];
-const programs = ["132-hour OSH Professional", "10-hour Construction Safety and Health", "30-hour Construction Safety and Health", "10-hour General Industry Safety and Health", "30-hour General Industry Safety and Health", "48-hour OSH Manager", "40-hour EM 385-1-1 (2024)"];
-const courses = ["105 Hazard Communication: Basic", "107 Emergency Action and Fire Prevention Plans", "625 HIPAA for Healthcare Workers", "656 Bloodborne Pathogens in the Healthcare Setting", "755 Bloodborne Pathogens Program Management"];
+const recommended = officialCourses;
+const programs = officialCourses;
+const courses = officialCourses;
 
 function Check({ children }: { children: React.ReactNode }) {
   return <li className="hero-point"><span aria-hidden="true">✓</span>{children}</li>;
@@ -51,7 +58,7 @@ export default function HomePage() {
       <section className="site-container spotlight-banner" aria-label="Kigali Safety Academy training benefits">
         <div className="spotlight-content">
           <img src="/assets/kigali-safety-academy-logo.webp" alt="Kigali Safety Academy shield logo" width="88" height="88" />
-          <div className="spotlight-copy"><span className="eyebrow">KIGALI SAFETY ACADEMY</span><h2>Learn well. Work safely.</h2><p>Practical knowledge for safer, healthier workplaces.</p></div>
+          <div className="spotlight-copy"><span className="eyebrow">KIGALI SAFETY ACADEMY</span><h2>Learn well. Work safely.</h2><p>Practical knowledge for safer, First aidier workplaces.</p></div>
           <ul className="spotlight-points"><li>✓ Self-paced learning</li><li>✓ Workplace-focused topics</li><li>✓ Built for safer teams</li></ul>
         </div>
       </section>
@@ -61,7 +68,7 @@ export default function HomePage() {
       </section>
 
       <section className="site-container feature-grid" aria-label="Training benefits">
-        <FeatureCard icon="✓" title="Practical Training" link="#programs"><p>Explore learning designed to build awareness of workplace safety and health topics.</p><p>Study course materials at a pace that fits your schedule.</p></FeatureCard>
+        <FeatureCard icon="✓" title="Practical Training" link="#programs"><p>Explore learning designed to build awareness of workplace safety and First aid topics.</p><p>Study course materials at a pace that fits your schedule.</p></FeatureCard>
         <FeatureCard icon="✓" title="For Organizations" link="#contact"><p>Support a shared approach to safety learning across your team.</p><p>Ask about training options for your workplace.</p></FeatureCard>
         <FeatureCard icon="✓" title="Safer Workplaces" link="#courses"><p>Strengthen everyday safety awareness with useful, accessible learning.</p><p>Take the next step toward safer work practices.</p></FeatureCard>
       </section>

@@ -2,11 +2,19 @@
 
 import { useState } from "react";
 
+const officialCourses = [
+  "Construction Safety and Health Management",
+  "Occupational Safety and Health (OSH)",
+  "First Aid Training",
+  "Fire Fighting Training",
+  "Rigger Safety Training",
+];
+
 const menuItems = [
   { label: "HOME", href: "#top", icon: "", items: [] },
   { label: "TRAINING", href: "#programs", items: [
     { title: "About Our Training", links: ["Learning at your own pace", "How training works", "Training for individuals", "Training for organizations"] },
-    { title: "Programs", links: ["General Industry", "Construction", "Healthcare", "Oil & Gas", "Public Sector", "HAZWOPER"] },
+    { title: "Programs", links: officialCourses },
     { title: "Courses", links: ["Course Catalog", "Popular Courses", "Student Learning"] },
   ] },
   { label: "BUSINESS SOLUTIONS", href: "#contact", items: [
@@ -29,7 +37,8 @@ const socialLinks = [
 ];
 
 function linkFor(label: string) {
-  if (/course|training|program|industry|construction|healthcare|HAZWOPER|oil|public/i.test(label)) return label.toLowerCase().includes("course") ? "#courses" : "#programs";
+  if (officialCourses.includes(label)) return "#courses";
+  if (/course|training|program|industry|construction|First aidcare|HAZWOPER|oil|public/i.test(label)) return label.toLowerCase().includes("course") ? "#courses" : "#programs";
   if (/spotlight|resource|topic|student|learning/i.test(label)) return "#courses";
   return "#contact";
 }
@@ -43,7 +52,7 @@ export default function SiteHeader() {
       <div className="header-row-1 site-container">
         <a href="#top" className="brand" aria-label="Kigali Safety Academy home">
           <img src="/assets/kigali-safety-academy-logo.webp" alt="Kigali Safety Academy shield logo" width="64" height="64" />
-          <span className="brand-copy"><strong>Kigali Safety Academy</strong><small>Occupational Safety &amp; Health Training</small></span>
+          <span className="brand-copy"><strong>Kigali Safety Academy</strong><small>Occupational Safety &amp; First aid Training</small></span>
         </a>
         <div className="header-row-1-right">
           <div className="account-links">

@@ -12,7 +12,7 @@ export default function SiteFooter() {
         <div className="footer-brand">
           <img src="/assets/kigali-safety-academy-logo.webp" alt="Kigali Safety Academy shield logo" width="74" height="74" />
           <strong>Kigali Safety Academy</strong>
-          <p>Practical learning for safer, healthier workplaces.</p>
+          <p>Practical learning for safer, First aidier workplaces.</p>
           <p><a href="#top">Back to top ↑</a></p>
         </div>
         {footerGroups.map((group) => <div className="footer-links" key={group.title}>

@@ -5,8 +5,8 @@ import CookieNotice from "@/components/CookieNotice";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Kigali Safety Academy | Safety and Health Training",
-  description: "Explore practical occupational safety and health training with Kigali Safety Academy.",
+  title: "Kigali Safety Academy | Safety and First aid Training",
+  description: "Explore practical occupational safety and First aid training with Kigali Safety Academy.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
