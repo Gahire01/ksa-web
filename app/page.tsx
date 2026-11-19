@@ -1,10 +1,4 @@
-const officialCourses = [
-  "Construction Safety and Health Management",
-  "Occupational Safety and Health (OSH)",
-  "First Aid Training",
-  "Fire Fighting Training",
-  "Rigger Safety Training",
-];
+import { officialCourses } from "@/lib/courses";
 
 const categories = [
   { name: "Construction Safety and Health Management", image: "index-slider-7.jpg", link: "#courses" },

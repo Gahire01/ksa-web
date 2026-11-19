@@ -1,14 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
-const officialCourses = [
-  "Construction Safety and Health Management",
-  "Occupational Safety and Health (OSH)",
-  "First Aid Training",
-  "Fire Fighting Training",
-  "Rigger Safety Training",
-];
+import { officialCourses } from "@/lib/courses";
 
 const menuItems = [
   { label: "HOME", href: "#top", icon: "", items: [] },
@@ -52,14 +45,14 @@ export default function SiteHeader() {
       <div className="header-row-1 site-container">
         <a href="#top" className="brand" aria-label="Kigali Safety Academy home">
           <img src="/assets/kigali-safety-academy-logo.webp" alt="Kigali Safety Academy shield logo" width="64" height="64" />
-          <span className="brand-copy"><strong>Kigali Safety Academy</strong><small>Occupational Safety &amp; First aid Training</small></span>
+          <span className="brand-copy"><strong>Kigali Safety Academy</strong><small>Empowering Safe  at Workplaces</small></span>
         </a>
         <div className="header-row-1-right">
           <div className="account-links">
-            <a href="#contact" className="login-link">
+            <a href="/login" className="login-link">
               <span className="account-icon login-ic" aria-hidden="true"></span> Login
             </a>
-            <a href="#contact" className="register-link">
+            <a href="/register" className="register-link">
               <span className="account-icon register-ic" aria-hidden="true"></span> Register
             </a>
           </div>
