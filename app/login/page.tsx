@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import LoginForm from "@/components/LoginForm";
-import { officialCourses } from "@/lib/courses";
+import { officialCourses } from "@/lib/data/courses";
 
 export const metadata: Metadata = {
-  title: "Login | Kigali Safety Academy",
+  title: "Login",
   description: "Sign in to your Kigali Safety Academy account to continue your safety training.",
 };
 
@@ -39,7 +39,7 @@ export default function LoginPage() {
               <h3>Active training courses</h3>
               <ul>{officialCourses.map((course) => <li key={course}>{course}</li>)}</ul>
             </div>
-            <p className="auth-help">Trouble signing in? <a href="/#contact">Contact us</a> and we will help.</p>
+            <p className="auth-help">Trouble signing in? <a href="/contact">Contact us</a> and we will help.</p>
           </aside>
         </div>
       </section>

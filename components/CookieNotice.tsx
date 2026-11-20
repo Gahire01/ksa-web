@@ -9,7 +9,7 @@ export default function CookieNotice() {
 
   return (
     <aside className="cookie-notice" role="dialog" aria-label="Cookie notice">
-      <p>This website uses cookies to support essential site functions and improve your browsing experience. <a href="#contact">Read our privacy information.</a></p>
+      <p>This website uses cookies to support essential site functions and improve your browsing experience. <a href="/privacy">Read our privacy information.</a></p>
       <button type="button" onClick={() => { localStorage.setItem("ksa-cookie-dismissed", "yes"); setVisible(false); }}>Got It!!</button>
     </aside>
   );

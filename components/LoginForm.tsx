@@ -1,18 +1,20 @@
 "use client";
 
 import { useState } from "react";
-
-type Status = { type: "error" | "success"; message: string } | null;
+import { postJson } from "@/lib/client";
+import type { FormResult } from "@/lib/types";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
-  const [status, setStatus] = useState<Status>(null);
+  const [status, setStatus] = useState<{ type: "error" | "success"; message: string } | null>(null);
+  const [pending, setPending] = useState(false);
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const data = new FormData(form);
     const email = String(data.get("email") ?? "").trim();
     const password = String(data.get("password") ?? "");
 
@@ -26,10 +28,11 @@ export default function LoginForm() {
       return;
     }
 
-    setStatus({
-      type: "success",
-      message: "Your details look good. Sign-in will be available once account access is connected.",
-    });
+    setPending(true);
+    setStatus(null);
+    const result = await postJson<FormResult>("/api/auth/login", { email, password });
+    setPending(false);
+    setStatus({ type: result.ok ? "success" : "error", message: result.data.message });
   }
 
   return (
@@ -53,14 +56,14 @@ export default function LoginForm() {
         <label className="checkbox-field" htmlFor="login-remember">
           <input id="login-remember" name="remember" type="checkbox" /> Keep me signed in
         </label>
-        <a className="auth-inline-link" href="/#contact">Forgot password?</a>
+        <a className="auth-inline-link" href="/contact?topic=Account%20help">Forgot password?</a>
       </div>
 
-      <button type="submit" className="auth-submit">Sign In</button>
+      <button type="submit" className="auth-submit" disabled={pending}>{pending ? "Signing in…" : "Sign In"}</button>
 
       {status && <p className={`form-status is-${status.type}`} role={status.type === "error" ? "alert" : "status"}>{status.message}</p>}
 
-      <p className="auth-note">This form is a preview. No sign-in details are sent or stored yet.</p>
+      <p className="auth-note">Sign-in is backend-ready. Account sessions will be activated when the student portal is connected.</p>
     </form>
   );
 }

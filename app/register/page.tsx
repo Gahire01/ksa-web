@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import RegisterForm from "@/components/RegisterForm";
-import { officialCourses } from "@/lib/courses";
+import { officialCourses } from "@/lib/data/courses";
 
 export const metadata: Metadata = {
-  title: "Register | Kigali Safety Academy",
+  title: "Register",
   description: "Create your Kigali Safety Academy account and register for occupational safety training.",
 };
 
-export default function RegisterPage() {
+export default async function RegisterPage({ searchParams }: { searchParams: Promise<{ course?: string }> }) {
+  const { course } = await searchParams;
   return (
     <main className="auth-page">
       <section className="auth-hero">
@@ -23,7 +24,7 @@ export default function RegisterPage() {
           <div className="auth-card">
             <h2>Registration</h2>
             <p className="auth-lead">Fields marked with a label are required.</p>
-            <RegisterForm />
+            <RegisterForm defaultCourse={course ?? ""} />
             <p className="auth-alt">Already registered? <a href="/login">Sign in</a></p>
           </div>
 
@@ -41,7 +42,7 @@ export default function RegisterPage() {
                 {officialCourses.map((course) => <li key={course}>{course}</li>)}
               </ul>
             </div>
-            <p className="auth-help">Training for a team? <a href="/#contact">Ask about business discounts</a>.</p>
+            <p className="auth-help">Training for a team? <a href="/business">Ask about business training</a>.</p>
           </aside>
         </div>
       </section>

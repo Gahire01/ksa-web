@@ -1,19 +1,22 @@
 "use client";
 
 import { useState } from "react";
-import { officialCourses } from "@/lib/courses";
-
-type Status = { type: "error" | "success"; message: string } | null;
+import { postJson } from "@/lib/client";
+import { officialCourses } from "@/lib/data/courses";
+import type { FormResult } from "@/lib/types";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export default function RegisterForm() {
+export default function RegisterForm({ defaultCourse = "" }: { defaultCourse?: string }) {
   const [showPassword, setShowPassword] = useState(false);
-  const [status, setStatus] = useState<Status>(null);
+  const [status, setStatus] = useState<{ type: "error" | "success"; message: string } | null>(null);
+  const [pending, setPending] = useState(false);
+  const selectedCourse = officialCourses.includes(defaultCourse) ? defaultCourse : "";
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const data = new FormData(form);
     const firstName = String(data.get("firstName") ?? "").trim();
     const lastName = String(data.get("lastName") ?? "").trim();
     const email = String(data.get("email") ?? "").trim();
@@ -46,10 +49,20 @@ export default function RegisterForm() {
       return;
     }
 
-    setStatus({
-      type: "success",
-      message: `Thanks, ${firstName}! Your registration details look complete. Account creation will be available once the student portal is connected.`,
+    setPending(true);
+    setStatus(null);
+    const result = await postJson<FormResult>("/api/auth/register", {
+      firstName,
+      lastName,
+      email,
+      phone: data.get("phone"),
+      course: data.get("course"),
+      password,
+      confirmPassword,
+      terms: acceptedTerms,
     });
+    setPending(false);
+    setStatus({ type: result.ok ? "success" : "error", message: result.data.message });
   }
 
   return (
@@ -78,7 +91,7 @@ export default function RegisterForm() {
 
       <div className="field">
         <label htmlFor="register-course">Course of interest</label>
-        <select id="register-course" name="course" defaultValue="">
+        <select id="register-course" name="course" defaultValue={selectedCourse}>
           <option value="">Select a course</option>
           {officialCourses.map((course) => <option key={course} value={course}>{course}</option>)}
           <option value="not-sure">Not sure yet</option>
@@ -103,14 +116,14 @@ export default function RegisterForm() {
 
       <label className="checkbox-field" htmlFor="register-terms">
         <input id="register-terms" name="terms" type="checkbox" />
-        <span>I agree to the training terms and understand that course availability is confirmed by Kigali Safety Academy.</span>
+        <span>I agree to the <a href="/terms">terms of use</a> and understand that course availability is confirmed by Kigali Safety Academy.</span>
       </label>
 
-      <button type="submit" className="auth-submit">Create Account</button>
+      <button type="submit" className="auth-submit" disabled={pending}>{pending ? "Creating…" : "Create Account"}</button>
 
       {status && <p className={`form-status is-${status.type}`} role={status.type === "error" ? "alert" : "status"}>{status.message}</p>}
 
-      <p className="auth-note">This form is a preview. No registration details are sent or stored yet.</p>
+      <p className="auth-note">Account creation is backend-ready. Student portal access will be activated when the service is connected.</p>
     </form>
   );
 }
